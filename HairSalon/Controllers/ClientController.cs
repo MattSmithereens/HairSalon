@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HairSalon.Controllers
 {
-    public class ClientController : Controller
+    public class ClientsController : Controller
     {
         // GET: /<controller>/
         public IActionResult Index()

@@ -1,7 +1,5 @@
 ﻿using System;
 using MySql.Data.MySqlClient;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using HairSalon;
 
