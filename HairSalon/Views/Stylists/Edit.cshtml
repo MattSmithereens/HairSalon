@@ -1,0 +1,18 @@
+﻿@using HairSalon.Models
+@model Stylist
+
+@{
+  Layout = "_Layout";
+}
+
+<div class='container'>
+    <h1>Edit Stylist</h1>
+    <form action='/stylists/@Model.Id/update' method='POST'>
+        <div class='form-group'>
+            <label asp-for='Name'>Name</label>
+            <input type='text' asp-for='Name' class='form-control' required>
+        </div>
+        <button type='submit' class='btn btn-info'>Update Stylist</button>
+        <a href='/stylists/@Model.Id' class='btn btn-secondary'>Back</a>
+    </form>
+</div>

@@ -1,0 +1,19 @@
+﻿@{
+  Layout = "_Layout";
+}
+
+<div class='container'>
+    <h1 class='center'>Stylists</h1>
+    <div class='top-button-box'>
+        <a href='/stylists/new' class='btn btn-lg btn-info'>Add Stylist</a>
+    </div>
+    @foreach (var stylist in Model)
+    {
+    <div class='card'>
+        <img class='card-img-top stylist-image' src='img/scissors-and-comb.svg' alt='Card image cap'>
+        <div class='card-body'>
+            <h5 class='card-title center'><a href='/stylists/@stylist.Id'>@stylist.Name</a></h5>
+        </div>
+    </div>
+    }
+</div>
