@@ -23,13 +23,11 @@ namespace HairSalon.Tests
         {
             Stylist stylist = new Stylist("new")
             {
-                first_name = "Brutus",
-                //stylist.last_name = "Beefcake";
-                id = 2
+                Name = "Brutus",
+                Id = 2
             };
-            Assert.AreEqual("Brutus", stylist.first_name);
-            //Assert.AreEqual("Beefcake", stylist.last_name);
-            Assert.AreEqual(2, stylist.id);
+            Assert.AreEqual("Brutus", stylist.Name);
+            Assert.AreEqual(2, stylist.Id);
         }
 
         [TestMethod]

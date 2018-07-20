@@ -20,13 +20,13 @@ namespace HairSalon.Controllers
             return View();
         }
 
-        [HttpPost("/stylists")]
-        public ActionResult Create(string name)
-        {
-            Stylist stylist = new Stylist(name);
-            stylist.Save();
-            return RedirectToAction("Index");
-        }
+        //[HttpPost("/stylists")]
+        //public ActionResult Create(string name)
+        //{
+        //    Stylist stylist = new Stylist(name);
+        //    stylist.Save();
+        //    return RedirectToAction("Index");
+        //}
 
         [HttpGet("/stylists/{id}")]
         public ActionResult Show(int id)
@@ -42,15 +42,15 @@ namespace HairSalon.Controllers
             return View(stylist);
         }
 
-        [HttpPost("/stylists/{id}/update")]
-        public ActionResult Update(int id, string first_name) //, string last_name
-        {
-            Stylist stylist = Stylist.Find(id);
-            stylist.first_name = first_name;
-            //stylist.last_name = last_name;
-            stylist.Update();
-            return RedirectToAction("Index");
-        }
+        //[HttpPost("/stylists/{id}/update")]
+        //public ActionResult Update(int id, string first_name) //, string last_name
+        //{
+        //    Stylist stylist = Stylist.Find(id);
+        //    stylist.first_name = first_name;
+        //    //stylist.last_name = last_name;
+        //    stylist.Update();
+        //    return RedirectToAction("Index");
+        //}
 
     }
 }
