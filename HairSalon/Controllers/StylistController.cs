@@ -20,13 +20,13 @@ namespace HairSalon.Controllers
             return View();
         }
 
-        //[HttpPost("/stylists")]
-        //public ActionResult Create(string name)
-        //{
-        //    Stylist stylist = new Stylist(name);
-        //    stylist.Save();
-        //    return RedirectToAction("Index");
-        //}
+        [HttpPost("/stylists")]
+        public ActionResult Create(string name)
+        {
+            Stylist stylist = new Stylist(name);
+            stylist.Save();
+            return RedirectToAction("Index");
+        }
 
         [HttpGet("/stylists/{id}")]
         public ActionResult Show(int id)

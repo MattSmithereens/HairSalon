@@ -11,13 +11,13 @@ namespace HairSalon.Models
 
         public int Id { get; set; }
         public string Name { get; set; }
-        public string StylistNum { get; set; }
+        public string StylistContact { get; set; }
 
-        public Stylist(string Name, string StylistNum, int Id = 0)
+        public Stylist(string Name, string StylistContact, int Id = 0)
         {
             this.Id = Id;
             this.Name = Name;
-            this.StylistNum = StylistNum;
+            this.StylistContact = StylistContact;
         }
 
         public Stylist(string v)
@@ -25,30 +25,30 @@ namespace HairSalon.Models
             this.v = v;
         }
 
-        // public void AddClient(Client client) // unnecessary since clients to stylists = 1 to many.  use for specialty
-        // {
-        //     MySqlConnection conn = DB.Connection();
-        //     conn.Open();
-        //     var cmd = conn.CreateCommand() as MySqlCommand;
-        //     cmd.CommandText = @"INSERT INTO clients_stylists (client_id, stylist_id) VALUES (@ClientId, @StylistId);";
-        //
-        //     MySqlParameter client_id = new MySqlParameter();
-        //     client_id.ParameterName = "@ClientId";
-        //     client_id.Value = client.Id;
-        //     cmd.Parameters.Add(client_id);
-        //
-        //     MySqlParameter stylist_id = new MySqlParameter();
-        //     stylist_id.ParameterName = "@StylistId";
-        //     stylist_id.Value = Id;
-        //     cmd.Parameters.Add(stylist_id);
-        //
-        //     cmd.ExecuteNonQuery();
-        //     conn.Close();
-        //     if (conn != null)
-        //     {
-        //         conn.Dispose();
-        //     }
-        // }
+         public void AddClient(Client client) // unnecessary since clients to stylists = 1 to many.  use for specialty
+         {
+             MySqlConnection conn = DB.Connection();
+             conn.Open();
+             var cmd = conn.CreateCommand() as MySqlCommand;
+             cmd.CommandText = @"INSERT INTO clients_stylists (client_id, stylist_id) VALUES (@ClientId, @StylistId);";
+        
+             MySqlParameter client_id = new MySqlParameter();
+             client_id.ParameterName = "@ClientId";
+             client_id.Value = client.Id;
+             cmd.Parameters.Add(client_id);
+        
+             MySqlParameter stylist_id = new MySqlParameter();
+             stylist_id.ParameterName = "@StylistId";
+             stylist_id.Value = Id;
+             cmd.Parameters.Add(stylist_id);
+        
+             cmd.ExecuteNonQuery();
+             conn.Close();
+             if (conn != null)
+             {
+                 conn.Dispose();
+             }
+         }
 
         // public List<Client> GetClients()  // need to return list of clients
         // {
@@ -140,7 +140,7 @@ namespace HairSalon.Models
 
             MySqlParameter stylistCode = new MySqlParameter();
             stylistCode.ParameterName = "@stylistCode";
-            stylistCode.Value = this.StylistNum;
+            stylistCode.Value = this.StylistContact;
             cmd.Parameters.Add(stylistCode);
 
             cmd.ExecuteNonQuery();

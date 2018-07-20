@@ -23,10 +23,12 @@ namespace HairSalon.Tests
         {
             Stylist stylist = new Stylist("new")
             {
-                Name = "Brutus",
+                Name = "Brutus Beefcake",
+                StylistContact = "stylist@email.com",
                 Id = 2
             };
-            Assert.AreEqual("Brutus", stylist.Name);
+            Assert.AreEqual("Brutus Beefcake", stylist.Name);
+            Assert.AreEqual("stylist@email.com", stylist.StylistContact);
             Assert.AreEqual(2, stylist.Id);
         }
 
