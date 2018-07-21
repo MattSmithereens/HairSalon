@@ -12,7 +12,7 @@ namespace HairSalon.Controllers
         }
 
         [HttpGet("/stylists")]
-        public ActionResult ViewAll()
+        public ActionResult Main()
         {
             return View(Stylist.GetAll());
         }
@@ -26,7 +26,7 @@ namespace HairSalon.Controllers
             Stylist newStylist = new Stylist(name, experience);
             newStylist.Save();
 
-            return RedirectToAction("ViewAll");
+            return RedirectToAction("Main");
         }
 
         [HttpGet("/stylist/{id}/details")]
@@ -43,7 +43,7 @@ namespace HairSalon.Controllers
             Stylist deleteStylist = Stylist.Find(id);
             deleteStylist.Delete();
 
-            return RedirectToAction("ViewAll");
+            return RedirectToAction("Main");
         }
 
         [HttpGet("/stylists/delete")]
@@ -51,7 +51,7 @@ namespace HairSalon.Controllers
         {
             Stylist.DeleteAll();
 
-            return RedirectToAction("ViewAll");
+            return RedirectToAction("Main");
         }
 
 

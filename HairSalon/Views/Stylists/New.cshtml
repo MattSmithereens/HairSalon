@@ -1,15 +1,12 @@
-﻿@using HairSalon.Models
-@model Stylist
-
-@{
-  Layout = "_Layout";
+﻿@{
+    Layout = "_Layout";
 }
 
-
-<h1>Add a Stylist</h1>
-<form action='/stylists' method='POST'>
-<p>Name</p><input type='text' name='name' class='form-control' required>
-<p>Email</p><input type='text' name='stylistContact' class='form-control' required>
-    
-<button type='submit'>Create Stylist</button>
+<form action="/stylists" method="post">
+    <div class="form-group">
+        <label for="name">Enter Stylist Name</label>
+        <input type="text" id="name" name="name" required />
+    </div>
+    <button type="submit">Add</button>
+    <a href="/">Return to Home</a>
 </form>

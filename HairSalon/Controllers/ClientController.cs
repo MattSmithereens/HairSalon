@@ -1,78 +1,94 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
 using Microsoft.AspNetCore.Mvc;
 using HairSalon.Models;
 
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace HairSalon.Controllers
 {
-    public class ClientsController : Controller
+    public class ClientController : Controller
     {
-        [HttpGet("new-client")]
+        [HttpGet("/client/add")]
         public ActionResult Create()
         {
-            return View(Stylist.GetAll());
+            if (Stylist.GetAll().Count == 0)
+            {
+                return View("Error");
+            }
+            else
+            {
+                return View(Stylist.GetAll());
+            }
         }
 
-        [HttpPost("new-client")]
-        public ActionResult CreatePost()
+        [HttpGet("/clients")]
+        public ActionResult Main()
+        {
+            return View(Client.GetAll());
+        }
+
+        [HttpPost("/clients")]
+        public ActionResult IndexPost()
         {
             string name = Request.Form["name"];
-            string stylistId = Request.Form["stylistId"];
-            int courseId = int.Parse(Request.Form["course"]);
+            int stylistId = int.Parse(Request.Form["stylist"]);
 
-            //DateTime date = Convert.ToDateTime(enrollDate);
+            Client newClient = new Client(name, stylistId);
+            newClient.Save();
 
-            //Stylist newStylist = Stylist.Find(stylistId);
-            //Client newClient = new Client(name, date);
-            //newClient.Save();
-            //newClient.AddStylist(newStylist);
+            Stylist existingStylist = Stylist.Find(stylistId);
+            newClient.AddStylist(existingStylist);
 
-            return RedirectToAction("ViewAll");
+            return RedirectToAction("Main");
         }
 
-        //[HttpGet("view-students")]
-        //public ActionResult ViewAll()
-        //{
-        //    List<Student> allStudents = Student.GetAll();
-        //    return View(allStudents);
-        //}
+        [HttpGet("/client/{id}/edit")]
+        public ActionResult Update(int id)
+        {
+            Client editClient = Client.Find(id);
 
-        //[HttpGet("student/{id}/details")]
-        //public ActionResult Details(int id)
-        //{
-        //    Student newStudent = Student.Find(id);
-        //    return View(newStudent);
-        //}
+            return View(editClient);
+        }
 
-        //[HttpGet("student/{id}/update")]
-        //public ActionResult Edit(int id)
-        //{
-        //    Student newStudent = Student.Find(id);
-        //    return View(newStudent);
-        //}
+        [HttpPost("/client/{id}/update")]
+        public ActionResult UpdatePost(int id, int newStylistId)
+        {
+            Client editClient = Client.Find(id);
+            string name = Request.Form["new-name"];
+            editClient.Edit(name);
 
-        //[HttpPost("student/{id}/update")]
-        //public ActionResult EditDetails(int id)
-        //{
-        //    string newName = Request.Form["newName"];
-        //    int courseId = int.Parse(Request.Form["newCourse"]);
-        //    Course newCourse = Course.Find(courseId);
-        //    Student newStudent = Student.Find(id);
-        //    newStudent.Edit(newName);
-        //    newStudent.AddCourse(newCourse);
-        //    return RedirectToAction("ViewAll");
-        //}
+            if (newStylistId > 0)
+            {
+                Stylist newStylist = Stylist.Find(newStylistId);
+                editClient.AddStylist(newStylist);
+            }
 
-        //[HttpPost("course/{id}/delete")]
-        //public ActionResult Delete(int id)
-        //{
-        //    Course newCourse = Course.Find(id);
-        //    newCourse.Delete();
-        //    return RedirectToAction("ViewAll");
-        //}
+            return RedirectToAction("Main");
+        }
+
+        [HttpGet("/client/{id}/show")]
+        public ActionResult Details(int id)
+        {
+            Client clientDetails = Client.Find(id);
+
+            return View(clientDetails);
+        }
+
+        [HttpGet("/client/{id}/delete")]
+        public ActionResult Delete(int id)
+        {
+            Client deleteClient = Client.Find(id);
+            deleteClient.Delete();
+
+            return RedirectToAction("Main");
+        }
+
+        [HttpGet("/clients/delete")]
+        public ActionResult DeleteAll()
+        {
+            Client.DeleteAll();
+
+            return RedirectToAction("Main");
+        }
     }
 }

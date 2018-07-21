@@ -1,18 +1,41 @@
-﻿@using HairSalon.Models
-@model Stylist
-
-@{
-  Layout = "_Layout";
+﻿@{
+    Layout = "_Layout";
 }
 
-<div class='container'>
-    <h1>Edit Stylist</h1>
-    <form action='/stylists/@Model.Id/update' method='POST'>
-        <div class='form-group'>
-            <label asp-for='Name'>Name</label>
-            <input type='text' asp-for='Name' class='form-control' required>
-        </div>
-        <button type='submit' class='btn btn-info'>Update Stylist</button>
-        <a href='/stylists/@Model.Id' class='btn btn-secondary'>Back</a>
-    </form>
-</div>
+<a href="/stylist/add">Add New Stylist</a>
+<a href="/" type="button" class="btn btn-primary">Return to Home</a>
+<a href="/stylist/@Model.stylist.Id/details">@Model.stylist.Name</a>
+<form action="/stylist/@Model.stylist.Id/update" method="post">
+    <div class="form-group">
+        <label for="new-name">Name:</label>
+        <input type="text" name="new-name" value="@Model.stylist.Name" required>
+    </div>
+    <div class="form-group">
+        <h6>(Optional) Add New Client To Stylist</h6>
+        <select name="newClientId">
+            <option value=0>None</option>
+            @foreach (var client in Model.GetAllClients())
+            {
+            @if(!(Model.stylist.GetClients().Contains(client)))
+            {
+            <option value="@client.Id">@client.Name</option>
+            }
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <h6>(Optional) Add New Specialty To Stylist</h6>
+        <select name="newSpecialtyId">
+            <option value=0>None</option>
+            @foreach (var specialty in Model.GetAllSpecialties())
+            {
+            @if(!(Model.stylist.GetSpecialties().Contains(specialty)))
+            {
+            <option value="@specialty.Id">@specialty.Name</option>
+            }
+            }
+        </select>
+    </div>
+    <button type="submit">Edit</button>
+    <a href="/" type="button">Return to Home</a>
+</form>
