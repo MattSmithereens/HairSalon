@@ -20,25 +20,14 @@
 
   <ItemGroup>
     <Folder Include="Models\" />
-    <Folder Include="Views\Clients\" />
-    <Folder Include="Views\Stylists\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Models\Salon.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Remove="Views\Clients\Index.cshtml" />
     <Content Remove="Views\Stylists\Index.cshtml" />
     <Content Remove="New.cshtml" />
     <Content Remove="Views\Stylists\New.cshtml" />
-    <Content Remove="Views\Stylists\Edit.cshtml" />
     <Content Remove="Views\Stylists\Show.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Views\Clients\Index.cshtml" />
-    <None Include="Views\Stylists\Main.cshtml" />
-    <None Include="Views\Stylists\New.cshtml" />
-    <None Include="Views\Stylists\Edit.cshtml" />
-    <None Include="Views\Stylists\Show.cshtml" />
   </ItemGroup>
 </Project>

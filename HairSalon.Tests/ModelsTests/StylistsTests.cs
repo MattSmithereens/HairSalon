@@ -38,17 +38,17 @@ namespace HairSalon.Tests
         }
 
 
-        //[TestMethod]
-        //public void Save_SavesStylistToDatabase_StylistList()
-        //{
-        //    Stylist salonTest = new Stylist("Brutus", 0);
-        //    salonTest.Save();
+        [TestMethod]
+        public void Save_SavesStylistToDatabase_StylistList()
+        {
+            Stylist salonTest = new Stylist("Brutus", 0);
+            salonTest.Save();
 
-        //    List<Stylist> actual = new List<Stylist> { salonTest };
-        //    List<Stylist> expected = Stylist.GetAll();
+            List<Stylist> actual = new List<Stylist> { salonTest };
+            List<Stylist> expected = Stylist.GetAll();
 
-        //    CollectionAssert.AreEqual(actual, expected);
-        //}
+            CollectionAssert.AreEqual(actual, expected);
+        }
 
         [TestMethod]
         public void Save_DBAssignsStylistId_Id()

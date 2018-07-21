@@ -19,4 +19,8 @@
   <ItemGroup>
     <ProjectReference Include="..\HairSalon\HairSalon.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="ModelsTests\ModelTests.cs" />
+    <Compile Remove="ControllersTests\ControllersTests.cs" />
+  </ItemGroup>
 </Project>
