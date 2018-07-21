@@ -2,13 +2,13 @@
     Layout = "_Layout";
 }
 
-
-<h3>@Model.Name's Page</h3>
-<h5><strong>Stylists:</strong></h5>
+<strong><a href="/stylists">Stylists</a></strong> | <strong>Clients</strong>
+<p>@Model.Name's Page</p>
+<p><strong>Stylists:</strong></p>
 @foreach (var stylist in Model.GetStylists())
-    {
+{
     <a href="~/stylist/@stylist.Id/details"><p>@stylist.Name</p></a><br />
-    }
+}
 <br />
 <a href="/client/@Model.Id/update">Edit</a>
 <a href="/client/@Model.Id/delete">Delete</a>

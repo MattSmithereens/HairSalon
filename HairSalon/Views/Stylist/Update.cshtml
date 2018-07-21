@@ -2,11 +2,10 @@
     Layout = "_Layout";
 }
 
+<strong>Stylists</strong> | <strong><a href="/clients">Clients</a></strong><br />
 <a href="/stylist/add">Add New Stylist</a>
 <a href="/" type="button" class="btn btn-primary">Return to Home</a>
-
 <a href="/stylist/@Model.stylist.Id/details">@Model.stylist.Name</a>
-
 <form action="/stylist/@Model.stylist.Id/update" method="post">
     <div class="form-group">
         <label for="new-name">Name:</label>
@@ -18,9 +17,9 @@
             <option value=0>None</option>
             @foreach (var client in Model.GetAllClients())
             {
-                @if(!(Model.stylist.GetClients().Contains(client)))
+                @if (!(Model.stylist.GetClients().Contains(client)))
                 {
-                  <option value="@client.Id">@client.Name</option>
+                    <option value="@client.Id">@client.Name</option>
                 }
             }
         </select>
