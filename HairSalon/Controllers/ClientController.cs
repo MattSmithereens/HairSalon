@@ -66,7 +66,7 @@ namespace HairSalon.Controllers
             return RedirectToAction("ViewAll");
         }
 
-        [HttpGet("/client/{id}/show")]
+        [HttpGet("/client/{id}/details")]
         public ActionResult Details(int id)
         {
             Client clientDetails = Client.Find(id);
@@ -90,5 +90,6 @@ namespace HairSalon.Controllers
 
             return RedirectToAction("ViewAll");
         }
+
     }
 }

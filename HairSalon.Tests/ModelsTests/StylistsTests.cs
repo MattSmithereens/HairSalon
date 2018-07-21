@@ -19,25 +19,24 @@ namespace HairSalon.Tests
         }
 
         [TestMethod]
+        public void GetAll_DBWiped_0()
+        {
+            int result = Stylist.GetAll().Count;
+            Assert.AreEqual(0, result);
+        }
+
+        [TestMethod]
         public void SetGetVariables_SetsGets_True()
         {
             Stylist salonTest = new Stylist("new", 1)
             {
                 Name = "Brutus Beefcake",
-                //StylistContact = "stylist@email.com",
                 Id = 1
             };
             Assert.AreEqual("Brutus Beefcake", salonTest.Name);
-            //Assert.AreEqual("stylist@email.com", salonTest.StylistContact);
             Assert.AreEqual(1, salonTest.Id);
         }
 
-        [TestMethod]
-        public void GetAll_DBSetEmpty_0()
-        {
-            int result = Stylist.GetAll().Count;
-            Assert.AreEqual(0, result);
-        }
 
         //[TestMethod]
         //public void Save_SavesStylistToDatabase_StylistList()
@@ -77,7 +76,7 @@ namespace HairSalon.Tests
         }
 
         [TestMethod]
-        public void GetClients_FindsAllClientsInDatabase_ClientList()
+        public void GetClients_FindsAllClientsInDB_ClientList()
         {
             Stylist salonTest = new Stylist("Bojack", 0);
             salonTest.Save();
