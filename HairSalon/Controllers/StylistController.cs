@@ -1,56 +1,59 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using HairSalon.Models;
 
 namespace HairSalon.Controllers
 {
-    public class StylistsController : Controller
+    public class StylistController : Controller
     {
-        [HttpGet("/stylists")]
-        public ActionResult Index()
-        {
-            List<Stylist> allStylists = Stylist.GetAll();
-            return View(allStylists);
-        }
-
-        [HttpGet("/stylists/new")]
-        public ActionResult New()
+        [HttpGet("/stylist/add")]
+        public ActionResult Create()
         {
             return View();
         }
 
+        [HttpGet("/stylists")]
+        public ActionResult ViewAll()
+        {
+            return View(Stylist.GetAll());
+        }
+
         [HttpPost("/stylists")]
-        public ActionResult Create(string name)
+        public ActionResult ViewAllPost()
         {
-            Stylist stylist = new Stylist(name);
-            stylist.Save();
-            return RedirectToAction("Index");
+            string name = Request.Form["name"];
+            int experience = int.Parse(Request.Form["exp"]);
+
+            Stylist newStylist = new Stylist(name, experience);
+            newStylist.Save();
+
+            return RedirectToAction("ViewAll");
         }
 
-        [HttpGet("/stylists/{id}")]
-        public ActionResult Show(int id)
+        [HttpGet("/stylist/{id}/details")]
+        public ActionResult Details(int id)
         {
-            Stylist stylist = Stylist.Find(id);
-            return View(stylist);
+            Stylist stylistDetails = Stylist.Find(id);
+
+            return View(stylistDetails);
         }
 
-        [HttpGet("/stylists/{id}/edit")]
-        public ActionResult Edit(int id)
+        [HttpGet("/stylist/{id}/delete")]
+        public ActionResult Delete(int id)
         {
-            Stylist stylist = Stylist.Find(id);
-            return View(stylist);
+            Stylist deleteStylist = Stylist.Find(id);
+            deleteStylist.Delete();
+
+            return RedirectToAction("ViewAll");
         }
 
-        //[HttpPost("/stylists/{id}/update")]
-        //public ActionResult Update(int id, string first_name) //, string last_name
-        //{
-        //    Stylist stylist = Stylist.Find(id);
-        //    stylist.first_name = first_name;
-        //    //stylist.last_name = last_name;
-        //    stylist.Update();
-        //    return RedirectToAction("Index");
-        //}
+        [HttpGet("/stylists/delete")]
+        public ActionResult DeleteAll()
+        {
+            Stylist.DeleteAll();
+
+            return RedirectToAction("ViewAll");
+        }
+
 
     }
 }
