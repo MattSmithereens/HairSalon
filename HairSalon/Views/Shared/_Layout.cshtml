@@ -1,34 +1,24 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - HairSalon</title>
-
-    <environment names="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
-    </environment>
-    <environment names="Staging,Production">
-        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
-              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-    </environment>
+    <meta charset='utf-8'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/styles.css">
 </head>
 <body>
     <div class="container">
         <div class="jumbotron">
             <h1>Snappy Snips</h1>
-            <a href="/stylists">Stylists</a>
+            <h1>WE WILL CUT YOU!</h1>
+            <small>like, for real.  We will cut you.</small><br />
+            <a href="/stylists">View All Stylists</a>
+            <a href="/stylist/add">Add Stylist</a>
+            <a href="/clients">View All Clients</a>
+            <a href="/client/add">Add Client</a>
         </div>
-        <div>
-            @RenderBody()
-            <hr />
-            <footer>
-                <p>&copy; 2018 - HairSalon</p>
-            </footer>
-        </div>
-    </div>
+
+        @RenderBody()
+
+     </div>
 </body>
 </html>

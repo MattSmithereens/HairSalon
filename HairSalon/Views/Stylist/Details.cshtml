@@ -1,0 +1,12 @@
+﻿@{
+    Layout = "_Layout";
+}
+
+@Model.Name's Page<br>
+Clients:
+@foreach (var client in Model.GetClients())
+{
+    <a href="~/client/@client.Id/details"><p>@client.Name</p></a> 
+    <a href="/stylist/@Model.Id/client/@client.Id/remove" class="btn-sm btn-danger">Remove</a><br />
+}
+

@@ -16,12 +16,17 @@ namespace HairSalon.Models
             this.Name = Name;
         }
 
+        public Stylist(string name)
+        {
+            Name = name;
+        }
+
         public void AddClient(Client newClient)
         {
             MySqlConnection conn = DB.Connection();
             conn.Open();
             var cmd = conn.CreateCommand() as MySqlCommand;
-            cmd.CommandText = @"INSERT INTO stylists_clients (client_id, stylist_id) VALUES (@ClientId, @StylistId);";
+            cmd.CommandText = @"INSERT INTO clients_stylists (client_id, stylist_id) VALUES (@ClientId, @StylistId);";
 
             MySqlParameter client_id = new MySqlParameter();
             client_id.ParameterName = "@ClientId";
@@ -48,8 +53,8 @@ namespace HairSalon.Models
             conn.Open();
             var cmd = conn.CreateCommand() as MySqlCommand;
             cmd.CommandText = @"SELECT clients.* FROM stylists
-                                JOIN stylists_clients ON (stylists.id = stylists_clients.stylist_id)
-                                JOIN clients ON (stylists_clients.client_id = clients.id)
+                                JOIN clients_stylists ON (stylists.id = clients_stylists.stylist_id)
+                                JOIN clients ON (clients_stylists.client_id = clients.id)
                                 WHERE stylists.id = @StylistId;";
 
             MySqlParameter stylistIdParameter = new MySqlParameter();
@@ -90,7 +95,7 @@ namespace HairSalon.Models
             conn.Open();
 
             var cmd = conn.CreateCommand() as MySqlCommand;
-            cmd.CommandText = @"DELETE FROM stylists_clients WHERE stylist_id = @searchId AND client_id = @ClientId;";
+            cmd.CommandText = @"DELETE FROM clients_stylists WHERE stylist_id = @searchId AND client_id = @ClientId;";
 
             MySqlParameter searchId = new MySqlParameter();
             searchId.ParameterName = "@searchId";

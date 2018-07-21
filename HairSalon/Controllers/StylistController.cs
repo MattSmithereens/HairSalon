@@ -12,7 +12,7 @@ namespace HairSalon.Controllers
         }
 
         [HttpGet("/stylists")]
-        public ActionResult Main()
+        public ActionResult ViewAll()
         {
             return View(Stylist.GetAll());
         }
@@ -21,12 +21,11 @@ namespace HairSalon.Controllers
         public ActionResult ViewAllPost()
         {
             string name = Request.Form["name"];
-            int experience = int.Parse(Request.Form["exp"]);
 
-            Stylist newStylist = new Stylist(name, experience);
+            Stylist newStylist = new Stylist(name);
             newStylist.Save();
 
-            return RedirectToAction("Main");
+            return RedirectToAction("ViewAll");
         }
 
         [HttpGet("/stylist/{id}/details")]
@@ -43,7 +42,7 @@ namespace HairSalon.Controllers
             Stylist deleteStylist = Stylist.Find(id);
             deleteStylist.Delete();
 
-            return RedirectToAction("Main");
+            return RedirectToAction("ViewAll");
         }
 
         [HttpGet("/stylists/delete")]
@@ -51,7 +50,7 @@ namespace HairSalon.Controllers
         {
             Stylist.DeleteAll();
 
-            return RedirectToAction("Main");
+            return RedirectToAction("ViewAll");
         }
 
 
