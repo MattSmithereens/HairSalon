@@ -29,5 +29,11 @@
     <Content Remove="New.cshtml" />
     <Content Remove="Views\Stylists\New.cshtml" />
     <Content Remove="Views\Stylists\Show.cshtml" />
+    <Content Remove="Views\Client\Confirm.cshtml" />
+    <Content Remove="Views\Stylist\Confirm.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\Client\Confirm.cshtml" />
+    <None Include="Views\Stylist\Confirm.cshtml" />
   </ItemGroup>
 </Project>

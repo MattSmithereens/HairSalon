@@ -83,6 +83,12 @@ namespace HairSalon.Controllers
             return RedirectToAction("ViewAll");
         }
 
+        [HttpGet("/client/confirm")]
+        public ActionResult Confirm()
+        {
+            return View();
+        }
+
         [HttpGet("/clients/delete")]
         public ActionResult DeleteAll()
         {

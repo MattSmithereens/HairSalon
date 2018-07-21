@@ -2,21 +2,19 @@
     Layout = "_Layout";
 }
 
-<div class="container">
-    <div>
-        <h3>Current Stylists</h3>
-        <a href="/stylist/add">Add New Stylist</a>
-        <a href="/stylists/delete">Delete All Stylists</a>
-    </div>
-    <div>
-        @{
-            foreach (var stylist in Model)
-            {
-                <h4><a href="/stylist/@stylist.Id/details">@stylist.Name</a></h4>
-                <a href="/stylist/@stylist.Id/update">Edit</a>
-                <a href="/stylist/@stylist.Id/delete">Delete</a>
-                <hr />
-            }
+<div>
+    <h3>Stylists</h3>
+    <a href="/stylist/add">Add New Stylist</a>
+    <a href="/stylist/confirm">Delete All Stylists</a>
+</div>
+<div>
+    @{
+        foreach (var stylist in Model)
+        {
+            <h4><a href="/stylist/@stylist.Id/details">@stylist.Name</a></h4>
+            <a href="/stylist/@stylist.Id/update">Edit</a>
+            <a href="/stylist/@stylist.Id/delete">Delete</a>
+            <hr />
         }
-    </div>
+    }
 </div>
