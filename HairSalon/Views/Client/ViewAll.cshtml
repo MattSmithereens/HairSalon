@@ -15,7 +15,7 @@
             @{
                 foreach (var client in Model)
                 {
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <strong><a href="/client/@client.Id/details">@client.Name</a></strong>
                     </div>
                     <div>
@@ -23,7 +23,7 @@
                         <span>|</span>
                         <small><a href="/client/@client.Id/delete">Delete</a></small>
                     </div>
-                    <div class="col-md-3"></div>
+                    <div class="col-md-9"></div>
                     <hr />
                 }
             }

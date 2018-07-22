@@ -59,6 +59,7 @@ namespace HairSalon.Controllers
 
             if (newStylistId > 0)
             {
+                //Client.DropStylist(id); // DELETE STYLIST
                 Stylist newStylist = Stylist.Find(newStylistId);
                 editClient.AddStylist(newStylist);
             }

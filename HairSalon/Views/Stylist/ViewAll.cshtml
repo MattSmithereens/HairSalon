@@ -12,15 +12,20 @@
           </p>
       </div>
 </div>
-<div>
+<div class="row">
     @{
-        foreach (var stylist in Model)
+    foreach (var stylist in Model)
         {
+        <div class="col-md-2">
             <strong><a href="/stylist/@stylist.Id/details">@stylist.Name</a></strong>
-            <small><a href="/stylist/@stylist.Id/details">Edit</a></small>
+        </div>
+        <div>
+            <small><a href="/client/@stylist.Id/update">Edit</a></small>
             <span>|</span>
-            <small><a href="/stylist/@stylist.Id/delete">Delete</a></small>
-            <hr />
+            <small><a href="/client/@stylist.Id/delete">Delete</a></small>
+        </div>
+        <div class="col-md-9"></div>
+        <hr />
         }
     }
 </div>
