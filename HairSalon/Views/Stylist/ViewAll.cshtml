@@ -3,17 +3,23 @@
 }
 
 <div>
-    <strong>Stylists</strong> | <strong><a href="/clients">Clients</a></strong><br />
-    <a href="/stylist/add">Add New Stylist</a>
-    <a href="/stylist/confirm">Delete All Stylists</a>
+    <h1>Stylists | <a href="/clients">Clients</a></h1>
+      <div>
+          <p>
+              <a href="/stylist/add">Add New Stylist</a>
+              <span>|</span>
+              <a href="/stylist/confirm">Delete All Stylists</a>
+          </p>
+      </div>
 </div>
 <div>
     @{
         foreach (var stylist in Model)
         {
-            <a href="/stylist/@stylist.Id/details">@stylist.Name</a>
-            <a href="/stylist/@stylist.Id/details">Edit</a>
-            <a href="/stylist/@stylist.Id/delete">Delete</a>
+            <strong><a href="/stylist/@stylist.Id/details">@stylist.Name</a></strong>
+            <small><a href="/stylist/@stylist.Id/details">Edit</a></small>
+            <span>|</span>
+            <small><a href="/stylist/@stylist.Id/delete">Delete</a></small>
             <hr />
         }
     }

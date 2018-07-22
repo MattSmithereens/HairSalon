@@ -3,17 +3,29 @@
 }
 
 <div>
-    <strong><a href="/stylists">Stylists</a></strong> | <strong>Clients</strong>
-    <div>
-        <a href="/client/add">Add Client</a> <a href="/client/confirm">Delete All Clients</a> 
-    </div>
-    @{
-    foreach (var client in Model)
-    {
-        <a href="/client/@client.Id/details">@client.Name</a>
-        <a href="/client/@client.Id/update">Edit</a>
-        <a href="/client/@client.Id/delete">Delete</a>
-        <hr />
-}
-    }
+    <h1><a href="/stylists">Stylists</a> | Clients</h1>
+        <div>
+            <p>
+                <a href="/client/add">Add New Client</a>
+                <span>|</span>
+                <a href="/client/confirm">Delete All Clients</a>
+            </p>
+        </div>
+        <div class="row">
+            @{
+                foreach (var client in Model)
+                {
+                    <div class="col-md-3">
+                        <strong><a href="/client/@client.Id/details">@client.Name</a></strong>
+                    </div>
+                    <div>
+                        <small><a href="/client/@client.Id/update">Edit</a></small>
+                        <span>|</span>
+                        <small><a href="/client/@client.Id/delete">Delete</a></small>
+                    </div>
+                    <div class="col-md-3"></div>
+                    <hr />
+                }
+            }
+        </div>
 </div>
