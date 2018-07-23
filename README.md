@@ -15,9 +15,27 @@ A .NET web app that allows the owner of a salon to add stylists and the stylist'
 * As an employee, I need to add new stylists to our system when they are hired.
 * As an employee, I need to be able to add new clients to a specific stylist. I should not be able to add a client if no stylists have been added.
 
+
 ## Setup on OSX
 
-*
+* Download and install .Net Core 1.1.4
+* Download and install Mono
+* Download and install MAMP 4.5
+* Clone the repo
+* Open MAMP and start servers
+* Set up database:  
+`CREATE DATABASE matt_smith`   
+`USE matt_smith`  
+`CREATE TABLE clients (id serial PRIMARY KEY, name VARCHAR(255), stylist_id INT)`  
+`CREATE TABLE stylists (id serial PRIMARY KEY, name VARCHAR(255), client_id INT)`  
+`CREATE TABLE clients_stylists (id serial PRIMARY KEY, nstylist_id INT, client_id INT)`
+
+* Run `dotnet restore` from project directory and test directory to install packages
+* Run `dotnet build` from project directory and fix any build errors
+* Run `dotnet test` from the test directory to run the testing suite
+* Run `dotnet run` to run application
+
+
 
 ## Contribution Requirements
 
@@ -29,11 +47,13 @@ A .NET web app that allows the owner of a salon to add stylists and the stylist'
 ## Technologies Used
 
 * .Net Core 1.1.4
-* MySQL
+* MAMP 4.5
+* MySql
+* Bootstrap 3.3.7
 
 ## Links
 
-* [Github Repo]
+* https://github.com/MattSmithereens/HairSalon
 
 ## License
 
