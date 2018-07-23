@@ -7,7 +7,7 @@
 <ul>
     @foreach (var stylist in Model.GetStylists())
     {
-    <li><a href="~/stylist/@stylist.Id/details">@stylist.Name</a></li>
+    <li><a href="~/stylists/@stylist.Id/details">@stylist.Name</a></li>
     }
 </ul>
 <a href="/client/@Model.Id/update">Edit</a> |
