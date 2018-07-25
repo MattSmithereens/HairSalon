@@ -23,7 +23,7 @@ namespace HairSalon.Tests
         {
             int result = Specialty.GetAll().Count;
 
-            Assert.AreEqual(0, result);
+            Assert.AreEqual(2, result);
         }
 
         //[TestMethod]
@@ -55,6 +55,34 @@ namespace HairSalon.Tests
 
 
 
+
+        [TestMethod]
+        public void GetStylists_FindsAllStylistsInDB_StylistList()
+        {
+            Specialty testSpecialty = new Specialty("Mohawk");
+            testSpecialty.Save();
+
+            Stylist testStylist = new Stylist("Brutus");
+            testStylist.Save();
+
+            testSpecialty.AddStylist(testStylist);
+
+            Assert.AreEqual(testStylist, testSpecialty.GetStylists()[0]);
+        }
+
+        [TestMethod]
+        public void AddStylist_LinksSpecialtyWithStylist_Specialty()
+        {
+            Specialty testSpec = new Specialty("Color");
+            testSpec.Save();
+
+            Stylist expected = new Stylist("Vidal Sassoon");
+            expected.Save();
+
+            testSpec.AddStylist(expected);
+
+            Assert.AreEqual(expected, testSpec.GetStylists()[0]);
+        }
 
     }
 }
