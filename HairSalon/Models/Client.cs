@@ -155,9 +155,9 @@ namespace HairSalon.Models
         {
             MySqlConnection conn = DB.Connection();
             conn.Open();
-            var cmd = conn.CreateCommand() as MySqlCommand;  // ############################# added line 1
-            cmd.CommandText = @"DELETE FROM clients_stylists WHERE client_id = @searchId; 
-                                INSERT INTO clients_stylists (client_id, stylist_id) VALUES (@ClientId, @StylistId);";
+            var cmd = conn.CreateCommand() as MySqlCommand; 
+            cmd.CommandText = @"DELETE FROM clients_stylists WHERE client_id = @searchId;
+                                INSERT INTO clients_stylists(client_id, stylist_id) VALUES(@ClientId, @StylistId); ";
 
             MySqlParameter client_id = new MySqlParameter();
             client_id.ParameterName = "@ClientId";
