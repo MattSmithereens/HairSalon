@@ -6,14 +6,14 @@ using HairSalon.Models;
 namespace HairSalon.Tests
 {
     [TestClass]
-    public class StylistTest : IDisposable
+    public class StylistsTest : IDisposable
     {
         public void Dispose()
         {
             Stylist.DeleteAll();
         }
 
-        public StylistTest()
+        public StylistsTest()
         {
             DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=matt_smith_test;";
         }
