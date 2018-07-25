@@ -11,6 +11,8 @@ namespace HairSalon.Tests
         public void Dispose()
         {
             Stylist.DeleteAll();
+            Client.DeleteAll();
+            Specialty.DeleteAll();
         }
 
         public StylistsTest()
@@ -19,75 +21,55 @@ namespace HairSalon.Tests
         }
 
         [TestMethod]
-        public void GetAll_DBWiped_0()
+        public void GetAll_InitialSetsEmpty_0()
         {
             int result = Stylist.GetAll().Count;
+
             Assert.AreEqual(0, result);
         }
 
         [TestMethod]
-        public void SetGetVariables_SetsGets_True()
+        public void Save_DBAssignsIdToStylist_Id()
         {
-            Stylist salonTest = new Stylist("new", 1)
-            {
-                Name = "Brutus Beefcake",
-                Id = 1
-            };
-            Assert.AreEqual("Brutus Beefcake", salonTest.Name);
-            Assert.AreEqual(1, salonTest.Id);
-        }
+            Stylist testClass = new Stylist("Fabio", 0);
+            testClass.Save();
 
+            Stylist savedClass = Stylist.GetAll()[0];
 
-        [TestMethod]
-        public void Save_SavesStylistToDatabase_StylistList()
-        {
-            Stylist salonTest = new Stylist("Brutus", 0);
-            salonTest.Save();
+            int result = savedClass.Id;
+            int testId = testClass.Id;
 
-            List<Stylist> actual = new List<Stylist> { salonTest };
-            List<Stylist> expected = Stylist.GetAll();
-
-            CollectionAssert.AreEqual(actual, expected);
+            Assert.AreEqual(testId, result);
         }
 
         [TestMethod]
-        public void Save_DBAssignsStylistId_Id()
+        public void RemoveClient_SeparateStylistClient_Stylist()
         {
-            Stylist salonTest = new Stylist("Brutus Beefcake", 0);
-            salonTest.Save();
+            Stylist testClass = new Stylist("Vidal");
+            testClass.Save();
 
-            Stylist testStylist = Stylist.GetAll()[0];
-
-            int actual = testStylist.Id;
-            int expected = salonTest.Id;
-
-            Assert.AreEqual(actual, expected);
-        }
-
-        [TestMethod]
-        public void Find_FindsStylistInDB_Stylist()
-        {
-            Stylist actual = new Stylist("Vidal Sassoon", 0);
-            actual.Save();
-
-            Stylist expected = Stylist.Find(actual.Id);
-
-            Assert.AreEqual(actual, expected);
-        }
-
-        [TestMethod]
-        public void GetClients_FindsAllClientsInDB_ClientList()
-        {
-            Stylist salonTest = new Stylist("Bojack", 0);
-            salonTest.Save();
-
-            Client testClient = new Client("Horseman");
+            Client testClient = new Client("Tyra");
             testClient.Save();
 
-            salonTest.AddClient(testClient);
+            testClass.AddClient(testClient);
+            testClass.RemoveClient(testClient);
 
-            Assert.AreEqual(testClient, salonTest.GetClients()[0]);
+            Assert.AreEqual(0, testClass.GetClients().Count);
         }
 
+        [TestMethod]
+        public void RemoveSpecialty_SeparateStylistSpecialty_Stylist()
+        {
+            Stylist testClass = new Stylist("Vidal");
+            testClass.Save();
+
+            Specialty testSpecialty = new Specialty("Facials");
+            testSpecialty.Save();
+
+            testClass.AddSpecialty(testSpecialty);
+            testClass.RemoveSpecialty(testSpecialty);
+
+            Assert.AreEqual(0, testClass.GetSpecialties().Count);
+        }
     }
 }

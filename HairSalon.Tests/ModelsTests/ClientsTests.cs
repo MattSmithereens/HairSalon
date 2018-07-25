@@ -1,12 +1,12 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using HairSalon.Models;
 using System;
 using System.Collections.Generic;
-using HairSalon.Models;
 
-namespace HairSalon.Tests
+namespace HairSalon.Tests.ModelsTests
 {
     [TestClass]
-    public class SpecialtiesTest : IDisposable
+    public class ClientsTests
     {
         public void Dispose()
         {
@@ -15,31 +15,32 @@ namespace HairSalon.Tests
             Specialty.DeleteAll();
         }
 
-        public SpecialtiesTest()
+        public ClientsTests()
         {
             DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=matt_smith_test;";
         }
 
         [TestMethod]
-        public void GetAll_InitialSetsEmpty_0_0()
+        public void GetAll_InitialSetsEmpty_0()
         {
-            int result = Specialty.GetAll().Count;
+            int result = Client.GetAll().Count;
 
             Assert.AreEqual(0, result);
         }
 
         [TestMethod]
-        public void Save_DBAssignsIdToSpecialty_Id()
+        public void Save_DatabaseAssignsIdToClient_Id()
         {
-            Specialty testClass = new Specialty("Facials");
-            testClass.Save();
+            Client testClient = new Client("Bob");
+            testClient.Save();
 
-            Specialty savedClass = Specialty.GetAll()[0];
+            Client savedClient = Client.GetAll()[0];
 
-            int result = savedClass.Id;
-            int testId = testClass.Id;
+            int result = savedClient.Id;
+            int testId = testClient.Id;
 
             Assert.AreEqual(testId, result);
         }
+
     }
 }

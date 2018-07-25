@@ -22,5 +22,6 @@
   <ItemGroup>
     <Compile Remove="ModelsTests\ModelTests.cs" />
     <Compile Remove="ControllersTests\ControllersTests.cs" />
+    <Compile Remove="ModelsTests\ControllersTests.cs" />
   </ItemGroup>
 </Project>

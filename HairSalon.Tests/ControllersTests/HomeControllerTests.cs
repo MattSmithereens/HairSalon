@@ -4,15 +4,14 @@ using HairSalon.Controllers;
 using HairSalon.Models;
 using System;
 
-namespace HairSalon.Tests.HomeControllerTests
+namespace HairSalon.Tests.HomeControllersTests
 {
     [TestClass]
-    public class ControllerTests
+    public class ControllersTests
     {
         [TestMethod]
         public void TestMethod1()
         {
-            // PASSED
             HomeController salonTest = new HomeController();
             ActionResult indexView = salonTest.View();
             Assert.IsInstanceOfType(indexView, typeof(ViewResult));
