@@ -61,7 +61,7 @@ namespace HairSalon.Controllers
             {
                 //Client.DropStylist(id); // DELETE STYLIST
                 Stylist newStylist = Stylist.Find(newStylistId);
-                editClient.AddStylist(newStylist);
+                editClient.AddStylist(newStylist);   // DAFUQ
             }
 
             return RedirectToAction("ViewAll");
