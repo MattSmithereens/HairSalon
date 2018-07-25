@@ -2,27 +2,32 @@
     Layout = "_Layout";
 }
 
-<strong>@Model.Name</strong> offers these services
+@Model.Name's specialties
+<div class="row">
+    @foreach(var specialty in Model.GetSpecialties())
+        {
+            <div class="col-md-2">
+                <strong><a href="~/specialty/@specialty.Id/details">@specialty.Name</a></strong>
+            </div>
+            <div>
+                <small><a href="/specialty/@Model.Id/specialty/@specialty.Id/remove">Remove</a></small>
+            </div>
+            <div class="col-md-9"></div>
+            <hr />
+        }
+</div>
 
-<ul>
-    @foreach (var specialty in Model.GetSpecialties())
-    {
-        <li><a href="~/specialty/@specialty.Id/details"><p class="stylist-paragraph">@specialty.Name</a>
-        <span> | </span>
-        <small><a href="/stylist/@Model.Id/specialty/@specialty.Id/remove">Remove</a></small></li>
-    }
-</ul>
-
-@Model.Name's Clients:
-<ul>
+@Model.Name's clients
+<div class="row">
     @foreach (var client in Model.GetClients())
-    {
-        <li>
-            <a href="~/client/@client.Id/details">@client.Name</a>
-            <span> | </span>
-            <small><a href="/stylist/@Model.Id/client/@client.Id/remove">Remove</a></small>
-        </li>
-    }
-</ul>
-
-
+        {
+            <div class="col-md-2">
+                <strong><a href="~/client/@client.Id/details">@client.Name</a></strong>
+            </div>
+            <div>
+                <small><a href="/client/@Model.Id/client/@client.Id/remove">Remove</a></small>
+            </div>
+            <div class="col-md-9"></div>
+            <hr />
+        }
+</div>

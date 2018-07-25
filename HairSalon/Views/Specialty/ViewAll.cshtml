@@ -13,18 +13,18 @@
     <div class="row">
         @{
         foreach (var specialty in Model)
-        {
-        <div class="col-md-2">
-            <strong><a href="/specialty/@specialty.Id/details">@specialty.Name</a></strong>
-        </div>
-        <div>
-            <small><a href="/specialty/@specialty.Id/update">Edit</a></small>
-            <span>|</span>
-            <small><a href="/specialty/@specialty.Id/delete">Delete</a></small>
-        </div>
-        <div class="col-md-9"></div>
-        <hr />
-        }
+            {
+            <div class="col-md-2">
+                <strong><a href="/specialty/@specialty.Id/details">@specialty.Name</a></strong>
+            </div>
+            <div>
+                <small><a href="/specialty/@specialty.Id/update">Edit</a></small>
+                <span>|</span>
+                <small><a href="/specialty/@specialty.Id/delete">Delete</a></small>
+            </div>
+            <div class="col-md-9"></div>
+            <hr />
+            }
         }
     </div>
 </div>
