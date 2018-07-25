@@ -4,11 +4,24 @@
 
 <strong>Stylists</strong>
 
-@Model.Name's Stylist Page<br>
-Clients:
+@Model.Name offers these services
+
+
+
+<ul>
+    @foreach (var specialty in Model.GetSpecialties())
+    {
+        <li><a href="~/specialty/@specialty.Id/details"><p class="stylist-paragraph">@specialty.Name</p></a><span> | </span>
+        <a href="/stylist/@Model.Id/specialty/@specialty.Id/remove">Remove</a></li>
+    }
+</ul>
+
+@Model.Name's Clients:
 <ul>
     @foreach (var client in Model.GetClients())
     {
         <li><a href="~/client/@client.Id/details">@client.Name</a></li>
     }
 </ul>
+
+

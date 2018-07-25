@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using HairSalon.Models;
+using HairSalon.ViewModels;
 
 namespace HairSalon.Controllers
 {
@@ -59,6 +60,23 @@ namespace HairSalon.Controllers
             return RedirectToAction("ViewAll");
         }
 
+        [HttpGet("/stylist/{id}/update")]
+        public ActionResult Update(int id)
+        {
+            Stylist editStylist = Stylist.Find(id);
+            StylistViewModel viewModel = new StylistViewModel(editStylist);
 
+            return View(viewModel);
+        }
+
+        [HttpGet("/stylist/{id}/specialty/{specialtyId}/remove")]
+        public ActionResult RemoveSpecialty(int id, int specialtyId)
+        {
+            Stylist existingStylist = Stylist.Find(id);
+            Specialty existingSpecialty = Specialty.Find(specialtyId);
+            existingStylist.RemoveSpecialty(existingSpecialty);
+
+            return RedirectToAction("Details", id);
+        }
     }
 }
