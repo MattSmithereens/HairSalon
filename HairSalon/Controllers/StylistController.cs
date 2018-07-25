@@ -22,9 +22,8 @@ namespace HairSalon.Controllers
         public ActionResult ViewAllPost()
         {
             string name = Request.Form["name"];
-            int experience = int.Parse(Request.Form["exp"]);
 
-            Stylist newStylist = new Stylist(name, experience);
+            Stylist newStylist = new Stylist(name);
             newStylist.Save();
 
             return RedirectToAction("ViewAll");
