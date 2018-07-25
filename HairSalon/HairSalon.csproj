@@ -33,10 +33,12 @@
     <Content Remove="Views\Client\Confirm.cshtml" />
     <Content Remove="Views\Stylist\Confirm.cshtml" />
     <Content Remove="Views\Specialty\Confirm.cshtml" />
+    <Content Remove="Views\Stylist\Update-Archive.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Views\Client\Confirm.cshtml" />
     <None Include="Views\Stylist\Confirm.cshtml" />
     <None Include="Views\Specialty\Confirm.cshtml" />
+    <None Include="Views\Stylist\Update.cshtml" />
   </ItemGroup>
 </Project>

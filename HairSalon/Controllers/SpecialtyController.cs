@@ -76,5 +76,11 @@ namespace HairSalon.Controllers
 
             return RedirectToAction("ViewAll");
         }
+
+        [HttpGet("/specialties/confirm")]
+        public ActionResult Confirm()
+        {
+            return View();
+        }
     }
 }

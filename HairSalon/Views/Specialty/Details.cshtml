@@ -4,21 +4,23 @@
 
 <div class="row">
     <div class="col-sm-12">
-        <a href="/specialty/add">Add New Specialty</a>
+        <a href="/specialty/add">Add New Specialty</a> | 
         <a href="/specialty/confirm">Delete All Specialties</a>
     </div>
 </div>
 <div class="row">
-    <div class="col-sm-12">
-        <h3>@Model.Name</h3>
-        <hr /><br />
-        <h5><strong>Stylists:</strong></h5>
+    <div class="col-sm-2">
+        <h5>@Model.Name</h5>
+        <p><strong>Stylists:</strong></p>
         @foreach (var stylist in Model.GetStylists())
         {
             <a href="~/stylist/@stylist.Id/details"><p>@stylist.Name</p></a><br />
         }
-        <hr />
-        <a href="/specialty/@Model.Id/update">Edit</a>
+    </div>
+    <div class="col-sm-2">
+        <a href="/specialty/@Model.Id/update">Edit</a><span> | </span>
         <a href="/specialty/@Model.Id/delete">Delete</a>
+    </div>
+    <div class="col-sm-8">
     </div>
 </div>
