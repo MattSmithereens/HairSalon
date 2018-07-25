@@ -2,25 +2,30 @@
     Layout = "_Layout";
 }
 
-<div class="row">
-    <div class="col-sm-12">
-        <a href="/specialty/add" type="button" class="btn btn-success">Add New Specialty</a>
-        <a href="/specialties/delete" type="button" class="btn btn-danger">Delete All Specialties</a>
-        <a href="/" type="button" class="btn btn-primary">Return to Home</a>
+<div>
+    <strong>Specialties</strong>
+    <div>
+        <p>
+            <a href="/client/add">Add New Specialty</a>
+            <span>|</span>
+            <a href="/specialty/confirm">Delete All Specialties</a>
+        </p>
     </div>
-</div>
-<hr />
-<div class="row">
-    <div class="col-sm-12">
-        <h3>Current Specialties</h3>
+    <div class="row">
         @{
-            foreach (var specialty in Model)
-            {
-                <h4><a href="/specialty/@specialty.Id/details">@specialty.Name</a></h4>
-                <a href="/specialty/@specialty.Id/update" type="button" class="btn btn-primary">Edit</a>
-                <a href="/specialty/@specialty.Id/delete" type="button" class="btn btn-danger">Delete</a>
-                <hr />
-            }
+        foreach (var specialty in Model)
+        {
+        <div class="col-md-2">
+            <strong><a href="/specialty/@specialty.Id/details">@specialty.Name</a></strong>
+        </div>
+        <div>
+            <small><a href="/specialty/@specialty.Id/update">Edit</a></small>
+            <span>|</span>
+            <small><a href="/specialty/@specialty.Id/delete">Delete</a></small>
+        </div>
+        <div class="col-md-9"></div>
+        <hr />
+        }
         }
     </div>
 </div>

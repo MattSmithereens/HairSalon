@@ -4,11 +4,10 @@
 
 <div class="row">
     <div class="col-sm-12">
-        <a href="/specialty/add" type="button" class="btn btn-success">Add New Specialty</a>
-        <a href="/" type="button" class="btn btn-primary">Return to Home</a>
+        <a href="/specialty/add">Add New Specialty</a>
+        <a href="/specialty/confirm">Delete All Specialties</a>
     </div>
 </div>
-<hr />
 <div class="row">
     <div class="col-sm-12">
         <h3>@Model.Name</h3>
@@ -19,7 +18,7 @@
             <a href="~/stylist/@stylist.Id/details"><p>@stylist.Name</p></a><br />
         }
         <hr />
-        <a href="/specialty/@Model.Id/update" type="button" class="btn btn-primary">Edit</a>
-        <a href="/specialty/@Model.Id/delete" type="button" class="btn btn-danger">Delete</a>
+        <a href="/specialty/@Model.Id/update">Edit</a>
+        <a href="/specialty/@Model.Id/delete">Delete</a>
     </div>
 </div>

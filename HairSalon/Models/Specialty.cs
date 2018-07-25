@@ -172,8 +172,8 @@ namespace HairSalon.Models
             conn.Open();
             var cmd = conn.CreateCommand() as MySqlCommand;
             cmd.CommandText = @"SELECT stylists.* FROM specialties
-                                JOIN stylists_specialties ON (specialties.id = stylists_specialties.specialty_id)
-                                JOIN stylists ON (stylists_specialties.stylist_id = stylists.id)
+                                JOIN specialties_stylists ON (specialties.id = specialties_stylists.specialty_id)
+                                JOIN stylists ON (specialties_stylists.stylist_id = stylists.id)
                                 WHERE specialties.id = @SpecialtyId;";
 
             MySqlParameter stylistIdParameter = new MySqlParameter();
@@ -213,7 +213,7 @@ namespace HairSalon.Models
             MySqlConnection conn = DB.Connection();
             conn.Open();
             var cmd = conn.CreateCommand() as MySqlCommand;
-            cmd.CommandText = @"INSERT INTO stylists_specialties (specialty_id, stylist_id) VALUES (@SpecialtyId, @StylistId);";
+            cmd.CommandText = @"INSERT INTO specialties_stylists (specialty_id, stylist_id) VALUES (@SpecialtyId, @StylistId);";
 
             MySqlParameter specialty_id = new MySqlParameter();
             specialty_id.ParameterName = "@SpecialtyId";
