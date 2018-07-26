@@ -38,7 +38,10 @@ A .NET web app that allows the owner of a salon to add stylists and the stylist'
 `USE matt_smith`  
 `CREATE TABLE clients (id serial PRIMARY KEY, name VARCHAR(255), stylist_id INT)`  
 `CREATE TABLE stylists (id serial PRIMARY KEY, name VARCHAR(255), client_id INT)`  
-`CREATE TABLE clients_stylists (id serial PRIMARY KEY, nstylist_id INT, client_id INT)`
+`CREATE TABLE clients_stylists (id serial PRIMARY KEY, stylist_id INT, client_id INT)`  
+`CREATE TABLE specialties (id serial PRIMARY KEY, name VARCHAR(255)`  
+`CREATE TABLE specialties_stylists (id serial PRIMARY KEY, stylist_id INT, specialty_id INT)`
+
 
 * Run `dotnet restore` from project directory and test directory to install packages
 * Run `dotnet build` from project directory and fix any build errors
