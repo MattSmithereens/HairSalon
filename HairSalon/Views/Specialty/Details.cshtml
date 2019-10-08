@@ -12,10 +12,12 @@
     <div class="col-sm-2">
         <h5>@Model.Name</h5>
         <p><strong>Stylists:</strong></p>
-        @foreach (var stylist in Model.GetStylists())
-        {
-            <a href="~/stylist/@stylist.Id/details"><p>@stylist.Name</p></a><br />
-        }
+        <ul>
+            @foreach (var stylist in Model.GetStylists())
+            {
+                <li><a href="~/stylist/@stylist.Id/details">@stylist.Name</a></li>
+            }
+        </ul>
     </div>
     <div class="col-sm-2">
         <a href="/specialty/@Model.Id/update">Edit</a><span> | </span>

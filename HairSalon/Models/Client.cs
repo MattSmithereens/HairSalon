@@ -164,9 +164,11 @@ namespace HairSalon.Models
             client_id.Value = Id;
             cmd.Parameters.Add(client_id);
 
-            MySqlParameter stylist_id = new MySqlParameter();
-            stylist_id.ParameterName = "@StylistId";
-            stylist_id.Value = newStylist.Id;
+            MySqlParameter stylist_id = new MySqlParameter
+            {
+                ParameterName = "@StylistId",
+                Value = newStylist.Id
+            };
             cmd.Parameters.Add(stylist_id);
 
             cmd.ExecuteNonQuery(); // DAFUQ
@@ -220,7 +222,8 @@ namespace HairSalon.Models
             conn.Open();
 
             var cmd = conn.CreateCommand() as MySqlCommand;
-            cmd.CommandText = @"DELETE FROM clients WHERE id = @searchId; DELETE FROM clients_stylists WHERE client_id = @searchId;";
+            cmd.CommandText = @"DELETE FROM clients WHERE id = @searchId;
+                                DELETE FROM clients_stylists WHERE client_id = @searchId;";
 
             MySqlParameter searchId = new MySqlParameter();
             searchId.ParameterName = "@searchId";
